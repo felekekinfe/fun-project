@@ -37,10 +37,26 @@ def play_game():
 
 
 def handle_turn(player):
-    position=int(input('choose a position from 1-9: '))-1
+    print(player + "'s turn")
+    position=int(input('choose a position from 1-9: '))
 
+    valid=False
+    while not valid:
+        while position not in [1,2,3,4,5,6,7,8,9]:
+            position=int(input('Invalid input. Choose a position from 1-9: '))
+        position=position-1
+
+        if board[position]=='_':
+            valid=True
+        else:
+        
+            print('its Taken Position!')
+        
     board[position]=player
     display_board()
+        
+
+    
     
 
 def check_if_game_over():
@@ -132,6 +148,6 @@ def flip_player():
         current_player='O'
     elif current_player=='O':
         current_player='X'
-    return
+  
 
 play_game()
